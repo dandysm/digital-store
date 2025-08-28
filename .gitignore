@@ -1,0 +1,24 @@
+# Database config (jangan upload password database)
+config/database.php
+
+# Images upload folder
+images/products/*
+!images/products/.gitkeep
+
+# Logs
+*.log
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
