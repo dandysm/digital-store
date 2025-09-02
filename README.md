@@ -35,3 +35,10 @@ Sebuah website e-commerce sederhana yang dibangun dengan PHP dan MySQL.
 - Bootstrap 5
 - Font Awesome
 - jQuery
+
+##Customer
+-email : demo@gmail.net
+-pass : demo123
+##Admin
+-email : admin@gmail.com
+-pass : password

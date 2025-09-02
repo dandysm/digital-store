@@ -10,9 +10,40 @@ class Order {
     public $payment_method;
     public $payment_status;
     public $created_at;
-
-    public function __construct($db) {
-        $this->conn = $db;
+    public $shipping_address;
+    public $city;
+    public $postal_code;
+    public $phone;
+    public $notes;
+    
+    public function create() {
+        $query = "INSERT INTO orders SET 
+                    user_id = :user_id,
+                    total_amount = :total_amount,
+                    status = :status,
+                    payment_method = :payment_method,
+                    payment_status = :payment_status,
+                    shipping_address = :shipping_address,
+                    city = :city,
+                    postal_code = :postal_code,
+                    phone = :phone,
+                    notes = :notes,
+                    created_at = NOW()";
+        
+        $stmt = $this->conn->prepare($query);
+        
+        $stmt->bindParam(':user_id', $this->user_id);
+        $stmt->bindParam(':total_amount', $this->total_amount);
+        $stmt->bindParam(':status', $this->status);
+        $stmt->bindParam(':payment_method', $this->payment_method);
+        $stmt->bindParam(':payment_status', $this->payment_status);
+        $stmt->bindParam(':shipping_address', $this->shipping_address);
+        $stmt->bindParam(':city', $this->city);
+        $stmt->bindParam(':postal_code', $this->postal_code);
+        $stmt->bindParam(':phone', $this->phone);
+        $stmt->bindParam(':notes', $this->notes);
+        
+        return $stmt->execute();
     }
 
     public function countAll() {
@@ -134,6 +165,10 @@ class Order {
         $stmt->bindParam(":user_id", $user_id);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+    
+    public function __construct($db) {
+        $this->conn = $db;
     }
 }
 ?>

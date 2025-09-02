@@ -240,3 +240,4 @@ $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <script src="js/main.js"></script>
 </body>
 </html>
+{{ HAPUS KODE NAVIGASI DI BAWAH INI }}

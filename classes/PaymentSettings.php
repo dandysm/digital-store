@@ -42,5 +42,13 @@ class PaymentSettings {
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
         return $result ? $result['is_active'] : false;
     }
+
+    public function getActivePaymentMethods() {
+        $query = "SELECT * FROM " . $this->table_name . " WHERE is_active = 1";
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute();
+        
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 }
 ?>

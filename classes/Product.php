@@ -84,5 +84,14 @@ class Product {
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
         return $row['total'];
     }
+
+    public function readOne($id) {
+        $query = "SELECT * FROM products WHERE id = :id AND is_active = 1";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+        
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
 }
 ?>
